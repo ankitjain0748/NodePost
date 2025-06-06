@@ -55,7 +55,6 @@ exports.getUserupdateById = async (req, res) => {
 };
 
 // Delete user
-
 exports.deleteUser = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
