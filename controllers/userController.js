@@ -40,7 +40,6 @@ exports.getUserById = async (req, res) => {
 };
 
 
-// Get user  by ID and Update user
 exports.getUserupdateById = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
