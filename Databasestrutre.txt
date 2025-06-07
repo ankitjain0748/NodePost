@@ -1,0 +1,134 @@
+Bilkul! 👇 Neeche ek **basic eCommerce website ke PostgreSQL tables ka structure** diya gaya hai — sirf table names aur unke fields ka overview, without actual SQL.
+
+---
+
+## 🛒 Basic eCommerce PostgreSQL Database Table Structure
+
+### 1. **users**
+
+* `id`
+* `name`
+* `email`
+* `password_hash`
+* `phone`
+* `address`
+* `created_at`
+
+---
+
+### 2. **categories**
+
+* `id`
+* `name`
+* `slug`
+* `description`
+* `created_at`
+
+---
+
+### 3. **products**
+
+* `id`
+* `name`
+* `description`
+* `price`
+* `stock`
+* `category_id` (foreign key)
+* `image_url`
+* `created_at`
+
+---
+
+### 4. **orders**
+
+* `id`
+* `user_id` (foreign key)
+* `total_amount`
+* `status` (`pending`, `shipped`, `delivered`, `cancelled`)
+* `created_at`
+
+---
+
+### 5. **order\_items**
+
+* `id`
+* `order_id` (foreign key)
+* `product_id` (foreign key)
+* `quantity`
+* `price`
+
+---
+
+### 6. **payments**
+
+* `id`
+* `order_id` (foreign key)
+* `payment_method` (`card`, `paypal`, `cod`, etc.)
+* `payment_status`
+* `transaction_id`
+* `paid_at`
+
+---
+
+### 7. **product\_reviews**
+
+* `id`
+* `product_id` (foreign key)
+* `user_id` (foreign key)
+* `rating` (1–5)
+* `comment`
+* `created_at`
+
+---
+
+### 8. **carts**
+
+* `id`
+* `user_id` (foreign key)
+* `created_at`
+
+---
+
+### 9. **cart\_items**
+
+* `id`
+* `cart_id` (foreign key)
+* `product_id` (foreign key)
+* `quantity`
+
+---
+
+### ✅ Optional Tables (for advanced features):
+
+#### 10. **shipping\_addresses**
+
+* `id`
+* `user_id`
+* `order_id`
+* `full_name`
+* `address_line1`
+* `address_line2`
+* `city`
+* `state`
+* `zipcode`
+* `country`
+* `phone_number`
+
+#### 11. **wishlists**
+
+* `id`
+* `user_id`
+* `product_id`
+
+---
+
+### ✅ Total Minimum Tables for Basic eCommerce:
+
+* `users`
+* `products`
+* `categories`
+* `orders`
+* `order_items`
+* `payments`
+
+Batao agar tumhein SQL `CREATE TABLE` script bhi chahiye — ready-to-run version ke saath.

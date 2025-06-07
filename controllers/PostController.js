@@ -4,7 +4,7 @@ const Post = require("../model/PostModel");
 exports.postcreate = async (req, res) => {
     try {
         console.log("REQ BODY:", req.body);
-        const { title, description, post_image, user_id, view } = req.body;
+        const { title, description, post_image,  view , user_id } = req.body;
         const result = await Post.createPost(title, description, post_image, view, user_id);
         console.log("result", result);
         res.json({
@@ -38,5 +38,15 @@ exports.postgetId = async (req, res) => {
         })
     } catch (error) {
 
+    }
+}
+
+exports.updatepost =  async(req,res)=>{
+    const{id, title ,  description,  view }= req.body;
+    try {
+        const result =  await Post.updatePost(id, title, description , view)
+        
+    } catch (error) {
+        console.log(error)
     }
 }

@@ -11,7 +11,7 @@ exports.profilegetbyid = async () => {
 }
 
 exports.CreateProfile = async (name, age, wp, profile) => {
-    const result = await pool.query("INSERT INTO Profiles (name ,ager ,wp , profile) values ($1  ,$2 ,S3 , $4) RETURNING  *", [
+    const result = await pool.query("INSERT INTO Profiles (name ,ager ,wp , profile) values  RETURNING  *", [
         name, age, wp, profile
     ])
     return result.rows[0]

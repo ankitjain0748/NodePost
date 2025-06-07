@@ -1,0 +1,48 @@
+| Datatype          | Size (approx)            | Use Case / Description                            |
+| ----------------- | ------------------------ | ------------------------------------------------- |
+| `INTEGER` / `INT` | 4 bytes                  | Whole numbers (e.g., 1, 100, -50)                 |
+| `BIGINT`          | 8 bytes                  | Large whole numbers (e.g., user IDs, counters)    |
+| `SMALLINT`        | 2 bytes                  | Small whole numbers (0 to 32767)                  |
+| `SERIAL`          | 4 bytes (auto-increment) | Auto-increment integer, often used as primary key |
+| `BIGSERIAL`       | 8 bytes (auto-increment) | Larger auto-increment integer                     |
+
+
+| VARCHAR(n) | Variable (up to n bytes)| Variable-length text up to n characters (e.g. names, emails) |
+| TEXT | Variable (up to 1GB) | Long text without length limit (e.g., descriptions) |
+| CHAR(n) | Fixed n bytes | Fixed-length string (rarely used) |
+
+| BOOLEAN | 1 byte | True / False values |
+
+| DATE | 4 bytes | Date only (YYYY-MM-DD) |
+| TIMESTAMP | 8 bytes | Date and time (without timezone) |
+| TIMESTAMPTZ | 8 bytes | Date and time with timezone |
+
+| NUMERIC(p,s) | Variable | Exact decimal numbers (e.g., money, price with decimals) |
+| REAL | 4 bytes (float) | Approximate decimal numbers (single precision float) |
+| DOUBLE PRECISION| 8 bytes (float) | Approximate decimal (double precision float) |
+
+| BYTEA | Variable | Binary data (files, images in binary form) |
+
+| UUID | 16 bytes | Universally unique identifiers |
+
+
+🛠️ Use Case Examples:
+ID fields: SERIAL or BIGSERIAL (auto increment integer)
+
+Names, Emails: VARCHAR(100) or TEXT if length can vary
+
+Passwords (hashed): VARCHAR(255) (hashes are fixed length but can be long)
+
+Prices: NUMERIC(10,2) (up to 10 digits with 2 decimal places)
+
+Dates: TIMESTAMP or TIMESTAMPTZ
+
+Boolean flags: BOOLEAN
+
+
+📏 Size ka simple idea:
+INTEGER = 4 bytes (thousands tak easily store kar sakta hai)
+
+VARCHAR(255) = max 255 characters, variable length actual stored size depends on string
+
+TEXT = practically unlimited text storage

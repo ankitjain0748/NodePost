@@ -1,0 +1,15 @@
+1. Insert 
+
+INSERT INTO TableName (table key) VALUES RETURNING *
+
+2. Get All Database
+SELECT*FROM TableName
+
+3. Get BY Id 
+SELECT * FROM TABLE NAME WHERE ID =$id  RETURNING * ,  [id]
+
+4. UPDATE 
+UPDATE TABLENAME SET  key=$key WHERE $id= id  RETURNING * , [id]
+
+5. DELETE 
+DELETE FROM TABLENAME WHERE ID  =$id  RETURNING * ,[id]

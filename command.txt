@@ -1,0 +1,21 @@
+1.  crete table command 
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password_hash VARCHAR(255),
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+
+2. Add nnew key after create  
+ALTER TABLE users ADD COLUMN phone VARCHAR(15);
+
+3.forgein key 
+xALTER TABLE users ADD COLUMN role_id INTEGER;
+
+ALTER TABLE users
+ADD CONSTRAINT fk_role
+FOREIGN KEY (role_id)
+REFERENCES roles(id);
