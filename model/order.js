@@ -6,4 +6,6 @@ const result =  await  pool.query("SELECT * FROM orders");
 return result.rows;
 }
 
-exports.OrderPost  = async(user_id, total_amount , status)=>{}
+exports.OrderPost  = async(user_id, total_amount , status)=>{
+    const  result = await  pool.query("INSERT INTO Order ")
+}
