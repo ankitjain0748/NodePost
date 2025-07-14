@@ -1,4 +1,4 @@
-const CategriosModel = require('../model/Categrios');
+const CategriosModel = require('../model/Categories');
 
 exports.addCategories = async (req, res) => {
     try {

@@ -6,12 +6,11 @@ exports.getAllUsers = async () => {
   return result.rows;
 };
 
-
-exports.createUser = async (name, email, password, phone) => {
+exports.createUser = async (name, email, password, phone ,roles) => {
   try {
     const result = await pool.query(
-      'INSERT INTO users (name, email, password, phone) VALUES ($1, $2, $3, $4) RETURNING *',
-      [name, email, password, phone]
+      'INSERT INTO users (name, email, password, phone, roles) VALUES  RETURNING *',
+      [name, email, password, phone , roles]
     );
     return result.rows[0];
   } catch (err) {
@@ -22,21 +21,20 @@ exports.createUser = async (name, email, password, phone) => {
 
 // Get user by ID
 exports.getUserById = async (id) => {
-const result = await pool.query('SELECT * FROM users WHERE id = $1', [id]);
-return result.rows[0];
+  const result = await pool.query(`SELECT * FROM users WHERE id = ${id}`, [id]);
+  return result.rows[0];
 };
 
 // Update user
 exports.updateUser = async (id, name, email, password, phone) => {
-const result = await pool.query(
-'UPDATE users SET name = $1, email = $2, password = $3, phone = $4 WHERE id = $5 RETURNING *',
-[name, email, password, phone, id]
-);
-return result.rows[0];
+  const result = await pool.query('UPDATE users  SET VALUES WHERE id = ${id} RETURNING *',
+    [name, email, password, phone, id]
+  );
+  return result.rows[0];
 };
 
 // Delete user
 exports.deleteUser = async (id) => {
-const result = await pool.query('DELETE FROM users WHERE id = $1 RETURNING *', [id]);
-return result.rows[0]; // null if not found
+  const result = await pool.query(`DELETE FROM users WHERE id = ${id} RETURNING *`, [id]);
+  return result.rows[0]; // null if not found
 };

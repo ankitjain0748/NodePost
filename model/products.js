@@ -7,7 +7,7 @@ exports.prodcutsget = async () => {
 
 
 exports.ProductAdd = async (name, description, price, stock) => {
-    const result = await pool.query("INSERT INTO product (name , descrption  , price  ,  stock) VALUES RETURNING * ", [
+    const result = await pool.query("INSERT INTO product (name , descrption , price ,image, stock) VALUES RETURNING * ", [
         name, description, price, stock
     ])
     return result.rows[0];

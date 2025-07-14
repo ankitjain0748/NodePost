@@ -1,0 +1,60 @@
+Sure! Here's a concise list of **all the main Prisma commands** you've seen or might need, along with their purpose:
+
+---
+
+# Prisma Commands Cheat Sheet
+
+| Command                                | Description                                                                   |
+| -------------------------------------- | ----------------------------------------------------------------------------- |
+| `npx prisma init`                      | Initialize Prisma in your project (creates `prisma/schema.prisma` and `.env`) |
+| `npx prisma migrate dev --name <name>` 
+(npx prisma migrate dev --name init) | Create and apply a new migration with the given name in dev mode              |
+| `npx prisma migrate reset`             | Reset the database: drops all data, reapplies migrations                      |
+| `npx prisma generate`                  | Generate Prisma client based on current schema                                |
+| `npx prisma studio`                    | Open Prisma Studio (GUI to view and edit your database data)                  |
+| `npx prisma format`                    | Format your Prisma schema file                                                |
+| `npx prisma db pull`                   | Introspect an existing database and update your schema.prisma                 |
+| `npx prisma migrate deploy`            | Apply migrations in production environment (doesn't create new ones)          |
+
+---
+
+# Typical Workflow Using These Commands
+
+1. `npx prisma init` — to setup Prisma first time
+2. Edit `prisma/schema.prisma` — define or update models
+3. `npx prisma migrate dev --name init` — create & run migration locally
+4. `npx prisma generate` — regenerate client (usually automatic after migrate)
+5. `node index.js` — run your Node.js app using Prisma Client
+6. `npx prisma studio` — optional, to browse your data visually
+7. Repeat steps 2-5 to evolve your schema with new migrations
+8. `npx prisma migrate reset` — reset DB in development if needed (clears data)
+9. `npx prisma migrate deploy` — deploy migrations safely on production server
+
+---
+
+If you want, I can provide example commands for your current models and schema changes too! Just ask.
+
+prisma  schema :- 
+
+model Users {
+  id       Int      @id @default(autoincrement())
+  name     String
+  email    String   @unique
+  createdAt DateTime @default(now())
+
+  orders   Orders[]   // 👈 back relation
+}
+
+model Orders {
+  id       Int      @id @default(autoincrement())
+  userId   Int
+  total    Float
+  createdAt DateTime @default(now())
+
+  user     Users    @relation(fields: [userId], references: [id])
+}
+
+
+
+
+

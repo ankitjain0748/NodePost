@@ -5,14 +5,12 @@ exports.Categries = async () => {
     const result = await pool.query('SELECT * FROM categories');
     return result.rows;
 };
-
 exports.AddCategories = async (categories, description, slug) => {
     console.log("Creating post with data:", { categories, description, slug });
     const result = await pool.query(
         `INSERT INTO categories (categories, description, slug) VALUES  RETURNING *`,
         [categories, description, slug]
     );
-
     console.log("Inserted:", result.rows[0]);
     return result.rows[0];
 };

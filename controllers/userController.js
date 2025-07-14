@@ -2,13 +2,11 @@ const UserModel = require('../model/userModel');
 
 exports.addUser = async (req, res) => {
   try {
-    const { name, email, password, phone } = req.body;
-
+    const { name, email, password, phone ,  roles } = req.body;
     if (!name || !email || !password) {
       return res.status(400).json({ error: 'Name, Email, and Password required' });
     }
-
-    const user = await UserModel.createUser(name, email, password, phone || null);
+    const user = await UserModel.createUser(name, email, password, phone ,roles || null);
     res.status(201).json(user);
   } catch (error) {
     console.error('Server Error:', error);
